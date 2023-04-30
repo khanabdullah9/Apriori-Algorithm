@@ -6,25 +6,24 @@ class AprioriAlgorithm:
         self.dataset = dataset
         self.k = 1
 
+    """
+    Creating itemsets of size 1 i.e the first candidate set
+    params -> None
+    returns -> void
+    """
     def distinct_itemsets(self):
         items = self.dataset['items']
         for item in items:
             if item not in self.items:
                 self.items.append(item)
 
-
+    """
+    Making candidate set iteratively
+    params -> None
+    returns -> <list>candidate set
+    """
     def make_candidate_sets(self):
-        candidate_set = []
-        for item in self.items:
-            for other_item in self.items:
-
-                if item != other_item:
-                    item_set = self.make_itemset(item, other_item)
-
-                    if self.is_valid_itemset(item_set) and item_set not in candidate_set:
-                        candidate_set.append(item_set)
-
-        return candidate_set
+        pass
                     
 
     """
@@ -33,9 +32,20 @@ class AprioriAlgorithm:
     def get_max_k():
         pass
 
+    """
+    Making item set
+    params -> <str>item : item
+              <str>other_item : item
+    returns -> <str>item set
+    """
     def make_itemset(self,item, other_item):
         return str(item +" "+other_item)
 
+    """
+    Checks if the itemset belongs to any row in the dataset
+    params -> <str>item_set : item set
+    returns -> <bool>
+    """
     def is_valid_itemset(self, item_set):
         isValid = False
         
@@ -47,6 +57,12 @@ class AprioriAlgorithm:
 
         return isValid
     
+    """
+    Checks whether certain row contains all the items
+    params -> <str>row : dataset row
+              <str>item_set : item set
+    returns -> <bool>
+    """
     def row_contains_all(self,row,item_set):
         lst = []
         
